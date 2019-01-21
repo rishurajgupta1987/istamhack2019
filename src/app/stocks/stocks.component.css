@@ -1,0 +1,40 @@
+label {
+    font-family: SourceSansPro-Regular;
+    font-size: 25px;
+}
+
+.searchContainer {
+    width: 600px;
+}
+
+.chart_div {
+    margin-top: 20px;
+}
+
+.input-group .form-control {
+    font-size: 20px;
+    border-radius: 0;
+    height: 50px;
+}
+
+.bodyView{
+    background-color: transparent;
+    margin-top: 20px;
+}
+
+h3{
+    font-family: SourceSansPro-Bold;
+    font-size: 25px;
+}
+
+.thumbnail{
+    height: 600px;
+}
+
+.listItem{
+    font-family: SourceSansPro-Regular;
+    border-bottom: 1px solid #000000;
+    list-style: none;
+    margin-top: 20px;
+    
+}

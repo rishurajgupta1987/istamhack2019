@@ -1,0 +1,130 @@
+<div *ngIf="showFailure" class="alert alert-danger msg alert-dismissible fade in" style="width: 100%;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+    <strong style="font-size: 25px;" aria-label="Warning! This may not be not the right time to invest!">  Warning: This may not be not the right time to invest!</strong>
+  </div>
+
+  <div *ngIf="showSuccess" class="alert alert-success msg alert-dismissible fade in" style="width: 100%;">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <i class="fa fa-check-circle-o fa-2x" aria-hidden="true"></i>
+      <strong style="font-size: 25px;" aria-label="Success! Time is in your hands. Public Perception is positive.">  Success! Time is in your hands. Public Perception is positive.</strong>
+    </div>
+
+<!-- Existing Customer Container -->
+<form [formGroup]="searchRequestForm" (ngSubmit)="showContainer(searchRequestForm.value)" novalidate>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">
+      <label style="color: white">Search Company Name</label>
+      <div class="input-group searchContainer">
+        <div class="input-group-addon">
+          <i class="fa fa-building fa-2x"></i>
+        </div>
+        <input type="text" id="seachCompanyName" class="form-control" formControlName="seachCompanyName" placeholder="Enter Company Name to Search..."
+          data-toggle="tooltip" data-placement="top" title="Enter Company Name to Search...">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-success" style="height: 50px;">Go!</button>
+        </span>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+<div class="row bodyView" *ngIf="showDiv">
+  <div class="col-sm-12 col-md-12">
+    <div class="thumbnail">
+      <div class="caption">
+        <p>
+          <a class="btn btn-success" role="button" (click)="showCurrentData()">CURRENT DATA</a>
+          <a class="btn btn-primary" style="margin-left: 10px;" role="button" (click)="showGraph()">GRAPH VIEW</a>
+
+            
+
+
+
+          <button name="Listen Next Record" title="Listen Next Record" *ngIf="showCompanyGraph" class="btn btn-danger pull-right"
+            (click)='speakGraph("next")'>
+            <i class="fa fa-fast-forward" aria-hidden="true"></i>
+          </button>
+
+          <button name="Stop Speaking" title="Stop Speaking" *ngIf="showCompanyGraph" class="btn btn-danger pull-right"
+            (click)='stopGraph()'>
+            <i class="fa fa-stop" aria-hidden="true"></i>
+          </button>
+
+          <button name="Listen Previous Record" title="Listen Previous Record" *ngIf="showCompanyGraph" style="margin-left: 10px;"
+            class="btn btn-danger pull-right" (click)='speakGraph("prev");'><i class="fa fa-fast-backward" aria-hidden="true"></i>
+          </button>
+
+          <button name="Speak for me" title="Speak for me" *ngIf="showCompanyGraph" style="margin-left: 10px;" class="btn btn-danger pull-right"
+            (click)='speakGraph("start");'>Speak for me</button>
+
+        </p>
+
+        <div *ngIf="showCompanyCurrentData">
+          <h3>Current Data</h3>
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <ul>
+              <li class="listItem">
+                <label>DATE</label>
+                <p>{{date}}</p>
+              </li>
+              <li class="listItem">
+                <label>HIGH</label>
+                <p>{{high}}</p>
+              </li>
+              <li class="listItem">
+                <label>LOW</label>
+                <p>{{low}}</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <ul>
+              <li class="listItem">
+                <label>OPEN</label>
+                <p>{{open}}</p>
+              </li>
+              <li class="listItem">
+                <label>CLOSE</label>
+                <p>{{close}}</p>
+              </li>
+              <li class="listItem">
+                <label>WAP</label>
+                <p>{{wap}}</p>
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="col-sm-3 col-md-3 col-lg-3">
+            <ul>
+              <li class="listItem">
+                <label>NO. OF SHARES</label>
+                <p>{{noshares}}</p>
+              </li>
+              <li class="listItem">
+                <label>NO. OF TRADES</label>
+                <p>{{notrades}}</p>
+              </li>
+              <li class="listItem">
+                <label>TOTAL TURNOVER</label>
+                <p>{{totalturnover}}</p>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+        <div align="center" *ngIf="showCompanyGraph">
+          <h3>Historical Data</h3>
+          <div id="chart_div" style="width: 800px; height: 400px;"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
